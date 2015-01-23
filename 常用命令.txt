@@ -1,0 +1,24 @@
+1.打开iOS模拟器：
+open “/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app”
+
+2.删除目录
+rm -rf some_directory
+
+3.苹果MAC OSX常用快捷键：
+http://support.apple.com/en-us/HT201236
+
+4.Cordova常用命令
+创建项目: cordova create ./NativeCordovaExample io.cordova.example NativeCordovaExample
+添加平台: cordova platform add ios/android
+添加插件: cordova plugin add org.apache.cordova.console
+编译项目: cordova build ios/android
+运行项目: cordova run ios/android
+调试项目: cordova serve
+
+5.Ionic常用命令
+安装: npm install -g cordova ionic
+创建项目: ionic start myApp tabs/blank/sidemenu
+添加平台: ionic platform add ios/android
+编译项目: ionic build ios/android
+运行项目: ionic emulate ios/android
+调试项目: ionic serve
