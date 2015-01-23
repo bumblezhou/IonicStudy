@@ -1,0 +1,136 @@
+2014-12-24 03:44:20.616 StarterApp[5030:1332886] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/zhou/Library/Developer/CoreSimulator/Devices/A37CE2C3-B90A-4D1F-9658-88DBD9DCC074/data/Containers/Data/Application/B68B286F-7F7A-43E5-8D3A-9B66E44E7A83/Library/Cookies/Cookies.binarycookies
+2014-12-24 03:44:21.332 StarterApp[5030:1332886] Apache Cordova native platform version 3.7.0 is starting.
+2014-12-24 03:44:21.333 StarterApp[5030:1332886] Multi-tasking -> Device: YES, App: YES
+2014-12-24 03:44:21.367 StarterApp[5030:1332886] Unlimited access to network resources
+2014-12-24 03:44:21.381 StarterApp[5030:1332886] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2014-12-24 03:44:22.071 StarterApp[5030:1332886] [CDVTimer][statusbar] 99.207997ms
+2014-12-24 03:44:22.071 StarterApp[5030:1332886] [CDVTimer][TotalPluginStartup] 99.392951ms
+2014-12-24 03:44:22.714 StarterApp[5030:1332886] Resetting plugins due to page load.
+2014-12-24 03:44:23.475 StarterApp[5030:1332886] ****************************
+2014-12-24 03:44:24.111 StarterApp[5030:1332886] Finished load of: file:///Users/zhou/Library/Developer/CoreSimulator/Devices/A37CE2C3-B90A-4D1F-9658-88DBD9DCC074/data/Containers/Bundle/Application/FAC94C18-E1B8-43FC-BD0B-FDE8D4302174/StarterApp.app/www/index.html#/menu/home
+2014-12-24 03:44:24.112 StarterApp[5030:1332886] Cordova is ready
+2014-12-24 03:44:37.795 StarterApp[5030:1332886] Email callback [object Object]
+2014-12-24 03:44:37.795 StarterApp[5030:1332886] ****************************AVVIATO
+2014-12-24 03:44:37.911 StarterApp[5030:1332886] -[__NSCFString countByEnumeratingWithState:objects:count:]: unrecognized selector sent to instance 0x78f9f0b0
+2014-12-24 03:44:37.912 StarterApp[5030:1332886] EmailComposer - Cannot set TO recipients; error: -[__NSCFString countByEnumeratingWithState:objects:count:]: unrecognized selector sent to instance 0x78f9f0b0
+2014-12-24 03:44:37.912 StarterApp[5030:1332886] THREAD WARNING: ['EmailComposer'] took '116.841797' ms. Plugin should use a background thread.
+2014-12-24 03:47:23.766 StarterApp[5323:1349893] Apache Cordova native platform version 3.7.0 is starting.
+2014-12-24 03:47:23.767 StarterApp[5323:1349893] Multi-tasking -> Device: YES, App: YES
+2014-12-24 03:47:23.768 StarterApp[5323:1349893] Unlimited access to network resources
+2014-12-24 03:47:23.771 StarterApp[5323:1349893] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2014-12-24 03:47:23.953 StarterApp[5323:1349893] [CDVTimer][statusbar] 18.571019ms
+2014-12-24 03:47:23.953 StarterApp[5323:1349893] [CDVTimer][TotalPluginStartup] 18.766046ms
+2014-12-24 03:47:24.014 StarterApp[5323:1349893] Resetting plugins due to page load.
+2014-12-24 03:47:24.248 StarterApp[5323:1349893] Finished load of: file:///Users/zhou/Library/Developer/CoreSimulator/Devices/A37CE2C3-B90A-4D1F-9658-88DBD9DCC074/data/Containers/Bundle/Application/5935759E-E99F-41DF-91D1-E83A5446F736/StarterApp.app/www/index.html#/menu/home
+2014-12-24 03:47:24.306 StarterApp[5323:1349893] ****************************
+2014-12-24 03:47:24.306 StarterApp[5323:1349893] Cordova is ready
+2014-12-24 03:48:05.066 StarterApp[5808:1353507] Apache Cordova native platform version 3.7.0 is starting.
+2014-12-24 03:48:05.067 StarterApp[5808:1353507] Multi-tasking -> Device: YES, App: YES
+2014-12-24 03:48:05.069 StarterApp[5808:1353507] Unlimited access to network resources
+2014-12-24 03:48:05.072 StarterApp[5808:1353507] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2014-12-24 03:48:05.790 StarterApp[5808:1353507] [CDVTimer][statusbar] 17.907977ms
+2014-12-24 03:48:05.790 StarterApp[5808:1353507] [CDVTimer][TotalPluginStartup] 18.081009ms
+2014-12-24 03:48:05.839 StarterApp[5808:1353507] Resetting plugins due to page load.
+2014-12-24 03:48:06.073 StarterApp[5808:1353507] Finished load of: file:///Users/zhou/Library/Developer/CoreSimulator/Devices/A37CE2C3-B90A-4D1F-9658-88DBD9DCC074/data/Containers/Bundle/Application/85D315C4-CC43-4EC4-BD70-6FEF3336953F/StarterApp.app/www/index.html#/menu/home
+2014-12-24 03:48:06.132 StarterApp[5808:1353507] ****************************
+2014-12-24 03:48:06.132 StarterApp[5808:1353507] Cordova is ready
+2014-12-24 03:51:18.468 StarterApp[6111:1369586] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/zhou/Library/Developer/CoreSimulator/Devices/A37CE2C3-B90A-4D1F-9658-88DBD9DCC074/data/Containers/Data/Application/949D9530-0D0E-4B29-ABD2-E8EC5BA3456F/Library/Cookies/Cookies.binarycookies
+2014-12-24 03:51:18.610 StarterApp[6111:1369586] Apache Cordova native platform version 3.7.0 is starting.
+2014-12-24 03:51:18.610 StarterApp[6111:1369586] Multi-tasking -> Device: YES, App: YES
+2014-12-24 03:51:18.646 StarterApp[6111:1369586] Unlimited access to network resources
+2014-12-24 03:51:18.653 StarterApp[6111:1369586] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2014-12-24 03:51:19.901 StarterApp[6111:1369586] [CDVTimer][statusbar] 17.455995ms
+2014-12-24 03:51:19.901 StarterApp[6111:1369586] [CDVTimer][TotalPluginStartup] 17.616034ms
+2014-12-24 03:51:20.506 StarterApp[6111:1369586] Resetting plugins due to page load.
+2014-12-24 03:51:20.864 StarterApp[6111:1369586] ****************************
+2014-12-24 03:51:22.301 StarterApp[6111:1369586] Finished load of: file:///Users/zhou/Library/Developer/CoreSimulator/Devices/A37CE2C3-B90A-4D1F-9658-88DBD9DCC074/data/Containers/Bundle/Application/3A66A8A1-04D5-4D77-9CD6-B3E3CFEDBB36/StarterApp.app/www/index.html#/menu/home
+2014-12-24 03:51:22.302 StarterApp[6111:1369586] Cordova is ready
+2014-12-24 03:53:02.194 StarterApp[6352:1377768] Apache Cordova native platform version 3.7.0 is starting.
+2014-12-24 03:53:02.195 StarterApp[6352:1377768] Multi-tasking -> Device: YES, App: YES
+2014-12-24 03:53:02.197 StarterApp[6352:1377768] Unlimited access to network resources
+2014-12-24 03:53:02.199 StarterApp[6352:1377768] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2014-12-24 03:53:02.401 StarterApp[6352:1377768] [CDVTimer][statusbar] 18.819988ms
+2014-12-24 03:53:02.401 StarterApp[6352:1377768] [CDVTimer][TotalPluginStartup] 18.994987ms
+2014-12-24 03:53:02.451 StarterApp[6352:1377768] Resetting plugins due to page load.
+2014-12-24 03:53:02.685 StarterApp[6352:1377768] Finished load of: file:///Users/zhou/Library/Developer/CoreSimulator/Devices/A37CE2C3-B90A-4D1F-9658-88DBD9DCC074/data/Containers/Bundle/Application/11F7D0F9-B07E-4C7D-978A-3E45DE18578B/StarterApp.app/www/index.html#/menu/home
+2014-12-24 03:53:02.751 StarterApp[6352:1377768] ****************************
+2014-12-24 03:53:02.751 StarterApp[6352:1377768] Cordova is ready
+2014-12-24 03:54:56.374 StarterApp[6606:1388944] Apache Cordova native platform version 3.7.0 is starting.
+2014-12-24 03:54:56.375 StarterApp[6606:1388944] Multi-tasking -> Device: YES, App: YES
+2014-12-24 03:54:56.377 StarterApp[6606:1388944] Unlimited access to network resources
+2014-12-24 03:54:56.379 StarterApp[6606:1388944] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2014-12-24 03:54:56.590 StarterApp[6606:1388944] [CDVTimer][statusbar] 16.130030ms
+2014-12-24 03:54:56.590 StarterApp[6606:1388944] [CDVTimer][TotalPluginStartup] 16.291022ms
+2014-12-24 03:54:56.663 StarterApp[6606:1388944] Resetting plugins due to page load.
+2014-12-24 03:54:56.905 StarterApp[6606:1388944] Finished load of: file:///Users/zhou/Library/Developer/CoreSimulator/Devices/A37CE2C3-B90A-4D1F-9658-88DBD9DCC074/data/Containers/Bundle/Application/C297F8D4-0EFB-4A48-A366-463560031B10/StarterApp.app/www/index.html#/menu/home
+2014-12-24 03:54:56.966 StarterApp[6606:1388944] ****************************
+2014-12-24 03:54:56.966 StarterApp[6606:1388944] Cordova is ready
+2014-12-24 03:55:02.479 StarterApp[6606:1388944] Link to tel:+8613565459883
+2014-12-24 03:55:02.785 StarterApp[6606:1388944] THREAD WARNING: ['InAppBrowser'] took '305.749023' ms. Plugin should use a background thread.
+2014-12-24 03:55:02.830 StarterApp[6606:1388944] webView:didFailLoadWithError - 101: The URL can’t be shown
+2014-12-24 03:58:07.914 StarterApp[6846:1404442] Apache Cordova native platform version 3.7.0 is starting.
+2014-12-24 03:58:07.914 StarterApp[6846:1404442] Multi-tasking -> Device: YES, App: YES
+2014-12-24 03:58:07.916 StarterApp[6846:1404442] Unlimited access to network resources
+2014-12-24 03:58:07.918 StarterApp[6846:1404442] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2014-12-24 03:58:08.125 StarterApp[6846:1404442] [CDVTimer][statusbar] 17.212033ms
+2014-12-24 03:58:08.125 StarterApp[6846:1404442] [CDVTimer][TotalPluginStartup] 17.404020ms
+2014-12-24 03:58:08.201 StarterApp[6846:1404442] Resetting plugins due to page load.
+2014-12-24 03:58:08.433 StarterApp[6846:1404442] Finished load of: file:///Users/zhou/Library/Developer/CoreSimulator/Devices/A37CE2C3-B90A-4D1F-9658-88DBD9DCC074/data/Containers/Bundle/Application/6AC2BBE9-64AB-4AD1-B466-E755C79D7BC4/StarterApp.app/www/index.html#/menu/home
+2014-12-24 03:58:08.499 StarterApp[6846:1404442] ****************************
+2014-12-24 03:58:08.499 StarterApp[6846:1404442] Cordova is ready
+2014-12-24 03:58:16.461 StarterApp[6846:1404442] Failed to load webpage with error: The URL can’t be shown
+2014-12-24 03:58:18.540 StarterApp[6846:1404442] Failed to load webpage with error: The URL can’t be shown
+2014-12-24 03:58:19.097 StarterApp[6846:1404442] Failed to load webpage with error: The URL can’t be shown
+2014-12-24 03:58:19.665 StarterApp[6846:1404442] Failed to load webpage with error: The URL can’t be shown
+2014-12-24 03:58:19.834 StarterApp[6846:1404442] Failed to load webpage with error: The URL can’t be shown
+2014-12-24 03:58:20.014 StarterApp[6846:1404442] Failed to load webpage with error: The URL can’t be shown
+2014-12-24 03:58:20.183 StarterApp[6846:1404442] Failed to load webpage with error: The URL can’t be shown

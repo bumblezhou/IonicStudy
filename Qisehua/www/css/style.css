@@ -1,0 +1,23 @@
+/* Empty. Add your own CSS if you like */
+.home-button {
+  line-height:23px;
+  height: 95px;
+}
+.home-row .home-button{
+  border-bottom:0px;
+}
+.home-row:last-child .home-button{
+  border-bottom: #b2b2b2 solid 1px
+}
+.positive-line-icon, .calm-line-icon, .assertive-line-icon {
+  font-size: 30px;
+}
+.positive-line-icon {
+  color : #145fd7;
+}
+.calm-line-icon {
+  color : #1aacc3;
+}
+.assertive-line-icon {
+  color : #cc2311;
+}

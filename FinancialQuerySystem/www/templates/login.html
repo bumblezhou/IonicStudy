@@ -1,0 +1,19 @@
+<ion-view title="登录">
+  <ion-content padding="false" class="has-header">
+    <img src="img/transform.jpg" />
+    <form>
+      <label class="item item-input">
+        <span class="input-label">用户名</span>
+        <input type="text" placeholder="用户名" ng-model="user.username">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">密码</span>
+        <input type="password" placeholder="密码" ng-model="user.password">
+      </label>
+      <button class="button button-positive button-block" ng-click="login(user)">登录</button>
+      <p class="text-center">
+        <a href="#/forget-password">Forgot password</a>
+      </p>
+    </form>
+  </ion-content>
+</ion-view>

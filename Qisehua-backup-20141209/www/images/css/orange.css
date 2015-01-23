@@ -1,0 +1,34 @@
+/*红色30 65 20*/
+
+/*背景颜色*/
+.top{ background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff8804), to(#ff9a00), color-stop(50%, #ff8804));}/*顶部背景颜色*/
+.top-right li.now{ background-color:#dc6e00; }/*顶部工具栏点击后变色*/
+.seachbox input.submit{ background-color:#dc6e00; }/*顶部工具栏按钮颜色*/
+nav.type1,nav.type2 ul,nav.type2 ul li,.index-product .ui-slider-dots b.ui-state-active{ background-color:#ff7200;}
+nav.type1 ul li.navdown{ background-color:#ededed;}/*当前页面导航颜色*/
+.style-1 h3.title{ background:-webkit-gradient(linear,0 0,0 100%,from(#ff7200),to(#de6300));} /*首页区块标题背景*/
+
+/*面板*/
+#wrapper_nav,nav.panel,#wrapper_sidebar,#sidebar,#sidebar dl{ background-color:#de7f32;}/*面板背景颜色*/
+nav.panel h3.title,#sidebar h3.title{ background-color:#b85200;}/*面板标题背景颜色*/
+nav.panel ul li,#sidebar dt,#sidebar dd{ border-color:#b85200; }/*面板底部边框颜色*/
+.seachbox_box,.langlist,nav.type3{background: rgba(255,136,4,0.8)}/*头部导航下拉颜色*/
+.seachbox_box i,.langlist i,nav.type3 i{border-color: transparent transparent rgba(255,136,4,0.8);}/*头部导航下拉颜色*/
+#sidebar dt.on, #sidebar h4.on{background: #d56811;}/*更多分类*/
+.sidebar .seachbox{background: rgba(255,178,28,0.8);}/*站内搜索背景*/
+.sidebar .seachbox .submit{background:#ff8804;}
+
+/*底部固定功能*/
+#footer .footerlist{border-top: 2px solid #ffa400; background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff7200), to(#de6300), color-stop(50%, #ff7200));}
+#footer ul li{border-right: 1px solid #e15400; border-left: 1px solid #ffa400;}
+.color-orange .info-nr-menu,.color-orange div{background-color:#ff7200;}/*底部弹出导航*/
+
+/*边框颜色*/
+nav.type2 ul li a,nav.type1 ul li{ border-color:#f36d00;}
+
+.metinfo_mobile_form li.radio span.name,.metinfo_mobile_form li.select span.name{ 
+	background-image: linear-gradient(#ffc85e, #ffb21c);
+	border-color:#ffb21c;
+}
+#memberbox .member_login_more a{ color:#ff840a;}
+#sitemaplist h2{background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffc85e), to(#ffb21c));}
