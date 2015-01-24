@@ -18,7 +18,9 @@ angular.module('qisehuaApp', ['ionic'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+  $ionicConfigProvider.backButton.text('返回').icon('ion-ios7-arrow-left');
 
   $stateProvider
   .state('login', {
@@ -165,8 +167,6 @@ angular.module('qisehuaApp', ['ionic'])
 .controller('HomeTabCtrl', function($scope, $state) {
   console.log('HomeTabCtrl');
 
-  //$("ion-nav-bar").show();
-
 })
 
 .controller('SuperMarketCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -175,12 +175,11 @@ angular.module('qisehuaApp', ['ionic'])
    content: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $timeout(function() {
-   //$('#super-market-page-content .scroll').empty();
-   $('<iframe id="nav-view-main-frame" src="http://www.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#super-market-page-content .scroll');
-   //$('#super-market-page-content .scroll').height("100%");
-   $ionicLoading.hide();
-   }, 2000);
+  $('<iframe id="nav-view-main-frame" src="http://www.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#super-market-page-content .scroll');
+  $("#nav-view-main-frame").load(function(){
+    $ionicLoading.hide();
+  });
+
 })
 
 .controller('CateringCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -189,16 +188,11 @@ angular.module('qisehuaApp', ['ionic'])
     content: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $timeout(function() {
-    //$('#catering-page-content .scroll').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.dc.klmyms.com" height="100%" width="100%" frameborder="0"></iframe>')
-      .load(function(){
-        //$(this).contents().find('nav').hide();
-      })
-      .appendTo('#catering-page-content .scroll');
-      //$('#catering-page-content .scroll').height("100%");
-      $ionicLoading.hide();
-    }, 2000);
+  $('<iframe id="nav-view-main-frame" src="http://www.dc.klmyms.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#catering-page-content .scroll');
+  $("#nav-view-main-frame").load(function(){
+    $ionicLoading.hide();
+  });
+
 })
 
 .controller('PharmacyCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -207,12 +201,11 @@ angular.module('qisehuaApp', ['ionic'])
     content: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $timeout(function() {
-    //$('#pharmacy-page-content .scroll').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.klmyxtyd.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#pharmacy-page-content .scroll');
-    //$('#pharmacy-page-content .scroll').height("100%");
+  $('<iframe id="nav-view-main-frame" src="http://www.klmyxtyd.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#pharmacy-page-content .scroll');
+  $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
-  }, 2000);
+  });
+
 })
 
 .controller('FlowerCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -221,12 +214,11 @@ angular.module('qisehuaApp', ['ionic'])
     content: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $timeout(function() {
-    //$('#flower-page-content .scroll').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.hny.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#flower-page-content .scroll');
-    //$('#flower-page-content .scroll').height("100%");
+  $('<iframe id="nav-view-main-frame" src="http://www.hny.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#flower-page-content .scroll');
+  $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
-  }, 2000);
+  });
+
 })
 
 .controller('ServiceCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -235,12 +227,10 @@ angular.module('qisehuaApp', ['ionic'])
     content: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $timeout(function() {
-    //$('#service-page-content .scroll').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.fw.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#service-page-content .scroll');
-    //$('#service-page-content .scroll').height("100%");
-    $ionicLoading.hide();
-  }, 2000);
+  $('<iframe id="nav-view-main-frame" src="http://www.fw.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#service-page-content .scroll');
+  //$('#service-page-content .scroll').height("100%");
+  $ionicLoading.hide();
+
 })
 
 .controller('BusinessCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -249,12 +239,11 @@ angular.module('qisehuaApp', ['ionic'])
     content: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $timeout(function() {
-    //$('#business-page-content .scroll').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.qsh.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#business-page-content .scroll');
-    //$('#business-page-content .scroll').height("100%");
+  $('<iframe id="nav-view-main-frame" src="http://www.qsh.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#business-page-content .scroll');
+  $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
-  }, 2000);
+  });
+
 })
 
 .controller('AboutUsCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -263,12 +252,11 @@ angular.module('qisehuaApp', ['ionic'])
     content: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $timeout(function() {
-    //$('#about-us-page-content .scroll').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/about/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#about-us-page-content .scroll');
-    //$('#about-us-page-content .scroll').height("100%");
+  $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/about/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#about-us-page-content .scroll');
+  $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
-  }, 2000);
+  });
+
 })
 
 .controller('NewsCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -277,12 +265,11 @@ angular.module('qisehuaApp', ['ionic'])
     content: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $timeout(function() {
-    //$('#news-page-content .scroll').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/news/news.php?lang=cn&class2=4" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#news-page-content .scroll');
-    //$('#news-page-content .scroll').height("100%");
+  $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/news/news.php?lang=cn&class2=4" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#news-page-content .scroll');
+  $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
-  }, 2000);
+  });
+
 })
 
 .controller('FriendlyLinksCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -291,20 +278,15 @@ angular.module('qisehuaApp', ['ionic'])
     content: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $timeout(function() {
-    //$('#friendly-links-page-content .scroll').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/link/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#friendly-links-page-content .scroll');
-    //$('#friendly-links-page-content .scroll').height("100%");
+  $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/link/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#friendly-links-page-content .scroll');
+  $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
-  }, 2000);
+  });
+
 })
 
 .controller('MapTabCtrl', function($scope, $state, $ionicLoading, $compile) {
   console.log('MapTabCtrl');
-
-  //$("ion-nav-bar").hide();
-
-  //$("#map").html('');
 
   // 百度地图API功能
   var mapopts = {
