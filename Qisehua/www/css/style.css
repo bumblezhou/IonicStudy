@@ -21,3 +21,8 @@
 .assertive-line-icon {
   color : #cc2311;
 }
+
+.iframe-issue {
+  -webkit-overflow-scrolling: touch !important;
+  overflow: scroll !important;
+}

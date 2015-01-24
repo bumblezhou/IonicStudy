@@ -176,8 +176,9 @@ angular.module('qisehuaApp', ['ionic'])
   });
 
   $timeout(function() {
-   $('#home-page-content').empty();
-   $('<iframe id="nav-view-main-frame" src="http://www.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#super-market-page-content');
+   //$('#super-market-page-content .scroll').empty();
+   $('<iframe id="nav-view-main-frame" src="http://www.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#super-market-page-content .scroll');
+   //$('#super-market-page-content .scroll').height("100%");
    $ionicLoading.hide();
    }, 2000);
 })
@@ -189,14 +190,15 @@ angular.module('qisehuaApp', ['ionic'])
   });
 
   $timeout(function() {
-    $('#home-page-content').empty();
+    //$('#catering-page-content .scroll').empty();
     $('<iframe id="nav-view-main-frame" src="http://www.dc.klmyms.com" height="100%" width="100%" frameborder="0"></iframe>')
       .load(function(){
         //$(this).contents().find('nav').hide();
       })
-      .appendTo('#catering-page-content');
-    $ionicLoading.hide();
-  }, 2000);
+      .appendTo('#catering-page-content .scroll');
+      //$('#catering-page-content .scroll').height("100%");
+      $ionicLoading.hide();
+    }, 2000);
 })
 
 .controller('PharmacyCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -206,8 +208,9 @@ angular.module('qisehuaApp', ['ionic'])
   });
 
   $timeout(function() {
-    $('#home-page-content').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.klmyxtyd.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#pharmacy-page-content');
+    //$('#pharmacy-page-content .scroll').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.klmyxtyd.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#pharmacy-page-content .scroll');
+    //$('#pharmacy-page-content .scroll').height("100%");
     $ionicLoading.hide();
   }, 2000);
 })
@@ -219,8 +222,9 @@ angular.module('qisehuaApp', ['ionic'])
   });
 
   $timeout(function() {
-    $('#home-page-content').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.hny.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#flower-page-content');
+    //$('#flower-page-content .scroll').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.hny.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#flower-page-content .scroll');
+    //$('#flower-page-content .scroll').height("100%");
     $ionicLoading.hide();
   }, 2000);
 })
@@ -232,8 +236,9 @@ angular.module('qisehuaApp', ['ionic'])
   });
 
   $timeout(function() {
-    $('#home-page-content').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.fw.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#service-page-content');
+    //$('#service-page-content .scroll').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.fw.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#service-page-content .scroll');
+    //$('#service-page-content .scroll').height("100%");
     $ionicLoading.hide();
   }, 2000);
 })
@@ -245,8 +250,9 @@ angular.module('qisehuaApp', ['ionic'])
   });
 
   $timeout(function() {
-    $('#home-page-content').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.qsh.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#business-page-content');
+    //$('#business-page-content .scroll').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.qsh.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#business-page-content .scroll');
+    //$('#business-page-content .scroll').height("100%");
     $ionicLoading.hide();
   }, 2000);
 })
@@ -258,8 +264,9 @@ angular.module('qisehuaApp', ['ionic'])
   });
 
   $timeout(function() {
-    $('#home-page-content').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/about/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#about-us-page-content');
+    //$('#about-us-page-content .scroll').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/about/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#about-us-page-content .scroll');
+    //$('#about-us-page-content .scroll').height("100%");
     $ionicLoading.hide();
   }, 2000);
 })
@@ -271,8 +278,9 @@ angular.module('qisehuaApp', ['ionic'])
   });
 
   $timeout(function() {
-    $('#home-page-content').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/news/news.php?lang=cn&class2=4" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#news-page-content');
+    //$('#news-page-content .scroll').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/news/news.php?lang=cn&class2=4" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#news-page-content .scroll');
+    //$('#news-page-content .scroll').height("100%");
     $ionicLoading.hide();
   }, 2000);
 })
@@ -284,8 +292,9 @@ angular.module('qisehuaApp', ['ionic'])
   });
 
   $timeout(function() {
-    $('#home-page-content').empty();
-    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/link/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#friendly-links-page-content');
+    //$('#friendly-links-page-content .scroll').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/link/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#friendly-links-page-content .scroll');
+    //$('#friendly-links-page-content .scroll').height("100%");
     $ionicLoading.hide();
   }, 2000);
 })
