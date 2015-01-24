@@ -33,6 +33,7 @@ angular.module('qisehuaApp', ['ionic'])
     controller: 'TabsCtrl'
   })
   .state('tabs.home', {
+    //cache: false,
     url: '/home',
     views: {
       'home-tab': {
@@ -123,6 +124,7 @@ angular.module('qisehuaApp', ['ionic'])
     }
   })
   .state('tabs.map', {
+    //cache: false,
     url: '/map',
     views: {
       'map-tab': {
@@ -132,6 +134,7 @@ angular.module('qisehuaApp', ['ionic'])
     }
   })
   .state('tabs.contacts', {
+    //cache: false,
     url: '/contacts',
     views: {
       'contacts-tab': {
@@ -162,7 +165,8 @@ angular.module('qisehuaApp', ['ionic'])
 .controller('HomeTabCtrl', function($scope, $state) {
   console.log('HomeTabCtrl');
 
-  //document.getElementsByTagName("ion-nav-bar")[0].style.display = '';
+  //$("ion-nav-bar").show();
+
 })
 
 .controller('SuperMarketCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -289,15 +293,17 @@ angular.module('qisehuaApp', ['ionic'])
 .controller('MapTabCtrl', function($scope, $state, $ionicLoading, $compile) {
   console.log('MapTabCtrl');
 
-  //document.getElementsByTagName("ion-nav-bar")[0].style.display = 'none';
+  //$("ion-nav-bar").hide();
+
+  //$("#map").html('');
 
   // 百度地图API功能
   var mapopts = {
     enableMapClick:false
   }
   var map = new BMap.Map("map", mapopts);
-  map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_ZOOM}));
-  map.disableDoubleClickZoom();
+  //map.addControl(new BMap.NavigationControl({anchor: BMAP_ANCHOR_BOTTOM_LEFT, type: BMAP_NAVIGATION_CONTROL_ZOOM}));
+  //map.disableDoubleClickZoom();
   var point = new BMap.Point(84.860936,45.603875);
   map.centerAndZoom(point, 16);
 
@@ -328,7 +334,7 @@ angular.module('qisehuaApp', ['ionic'])
 .controller('ContactsTabCtrl', function($scope, $state) {
   console.log('ContactsTabCtrl');
 
-  //document.getElementsByTagName("ion-nav-bar")[0].style.display = '';
+  //$("ion-nav-bar").show();
 
   $scope.dailConfirm = function() {
     var dailPopup = $ionicPopup.confirm({
@@ -350,7 +356,8 @@ angular.module('qisehuaApp', ['ionic'])
 
 })
 
-.controller('TabsCtrl', function($scope, $state, $ionicPopup) {
+.controller('TabsCtrl', function($scope, $state, $ionicPopup, $ionicTabsDelegate) {
+  console.log('TabsCtrl');
 
   $scope.whetherHideItem = ionic.Platform.isIOS() ? 'hide' : '';
   $scope.tabsStyle = 'tabs-icon-top tabs-positive pane tabs-bottom tabs-standard';
