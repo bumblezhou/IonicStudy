@@ -41,6 +41,33 @@ angular.module('qisehuaApp', ['ionic'])
       }
     }
   })
+  .state('tabs.super-market', {
+    url: '/super-market',
+    views: {
+      'home-tab': {
+        templateUrl: 'templates/super-market/index.html',
+        controller: 'SuperMarketCtrl'
+      }
+    }
+  })
+  .state('tabs.catering', {
+    url: '/catering',
+    views: {
+      'home-tab': {
+        templateUrl: 'templates/catering/index.html',
+        controller: 'CateringCtrl'
+      }
+    }
+  })
+  .state('tabs.pharmacy', {
+    url: '/pharmacy',
+    views: {
+      'home-tab': {
+        templateUrl: 'templates/pharmacy/index.html',
+        controller: 'PharmacyCtrl'
+      }
+    }
+  })
   .state('tabs.map', {
     url: '/map',
     views: {
@@ -82,6 +109,49 @@ angular.module('qisehuaApp', ['ionic'])
   console.log('HomeTabCtrl');
 
   //document.getElementsByTagName("ion-nav-bar")[0].style.display = '';
+})
+
+.controller('SuperMarketCtrl', function($scope, $state, $timeout, $ionicLoading){
+  console.log('SuperMarketCtrl');
+  var loading = $ionicLoading.show({
+   content: '<img src="img/loading.gif" alt="加载中..." />'
+  });
+
+  $timeout(function() {
+   $('#home-page-content').empty();
+   $('<iframe id="nav-view-main-frame" src="http://www.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#super-market-page-content');
+   $ionicLoading.hide();
+   }, 2000);
+})
+
+.controller('CateringCtrl', function($scope, $state, $timeout, $ionicLoading){
+  console.log('CateringCtrl');
+  var loading = $ionicLoading.show({
+    content: '<img src="img/loading.gif" alt="加载中..." />'
+  });
+
+  $timeout(function() {
+    $('#home-page-content').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.dc.klmyms.com" height="100%" width="100%" frameborder="0"></iframe>')
+      .load(function(){
+        //$(this).contents().find('nav').hide();
+      })
+      .appendTo('#catering-page-content');
+    $ionicLoading.hide();
+  }, 2000);
+})
+
+.controller('PharmacyCtrl', function($scope, $state, $timeout, $ionicLoading){
+  console.log('PharmacyCtrl');
+  var loading = $ionicLoading.show({
+    content: '<img src="img/loading.gif" alt="加载中..." />'
+  });
+
+  $timeout(function() {
+    $('#home-page-content').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.klmyxtyd.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#pharmacy-page-content');
+    $ionicLoading.hide();
+  }, 2000);
 })
 
 .controller('MapTabCtrl', function($scope, $state, $ionicLoading, $compile) {
@@ -154,25 +224,33 @@ angular.module('qisehuaApp', ['ionic'])
   $scope.tabsStyle = 'tabs-icon-top tabs-positive pane tabs-bottom tabs-standard';
 
   $scope.quitConfirm = function() {
-    var quitPopup = $ionicPopup.confirm({
-      title: '<strong>系统提示</strong>',
-      template: '你确定要退出应用吗?',
-      okText: '退出',
-      cancelText: '取消'
-    });
 
-    quitPopup.then(function (res) {
-      if (res) {
-        if(ionic.Platform.isAndroid()){
-          ionic.Platform.exitApp();
-          //navigator.app.exitApp();
-        } else {
-          $state.go('login');
-        }
-      } else {
-        // Don't close
-      }
-    });
+    if(ionic.Platform.isAndroid()){
+      ionic.Platform.exitApp();
+      //navigator.app.exitApp();
+    } else {
+      $state.go('login');
+    }
+    
+    // var quitPopup = $ionicPopup.confirm({
+    //   title: '<strong>系统提示</strong>',
+    //   template: '你确定要退出应用吗?',
+    //   okText: '退出',
+    //   cancelText: '取消'
+    // });
+    //
+    // quitPopup.then(function (res) {
+    //   if (res) {
+    //     if(ionic.Platform.isAndroid()){
+    //       ionic.Platform.exitApp();
+    //       //navigator.app.exitApp();
+    //     } else {
+    //       $state.go('login');
+    //     }
+    //   } else {
+    //     // Don't close
+    //   }
+    // });
   };
 
   // An alert dialog
