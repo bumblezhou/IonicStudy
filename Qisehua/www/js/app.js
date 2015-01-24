@@ -68,6 +68,60 @@ angular.module('qisehuaApp', ['ionic'])
       }
     }
   })
+  .state('tabs.flower', {
+    url: '/flower',
+    views: {
+      'home-tab': {
+        templateUrl: 'templates/flower/index.html',
+        controller: 'FlowerCtrl'
+      }
+    }
+  })
+  .state('tabs.service', {
+    url: '/service',
+    views: {
+      'home-tab': {
+        templateUrl: 'templates/service/index.html',
+        controller: 'ServiceCtrl'
+      }
+    }
+  })
+  .state('tabs.business', {
+    url: '/business',
+    views: {
+      'home-tab': {
+        templateUrl: 'templates/business/index.html',
+        controller: 'BusinessCtrl'
+      }
+    }
+  })
+  .state('tabs.about-us', {
+    url: '/about-us',
+    views: {
+      'home-tab': {
+        templateUrl: 'templates/about-us/index.html',
+        controller: 'AboutUsCtrl'
+      }
+    }
+  })
+  .state('tabs.news', {
+    url: '/news',
+    views: {
+      'home-tab': {
+        templateUrl: 'templates/news/index.html',
+        controller: 'NewsCtrl'
+      }
+    }
+  })
+  .state('tabs.friendly-links', {
+    url: '/friendly-links',
+    views: {
+      'home-tab': {
+        templateUrl: 'templates/friendly-links/index.html',
+        controller: 'FriendlyLinksCtrl'
+      }
+    }
+  })
   .state('tabs.map', {
     url: '/map',
     views: {
@@ -77,12 +131,12 @@ angular.module('qisehuaApp', ['ionic'])
       }
     }
   })
-  .state('tabs.about', {
-    url: '/about',
+  .state('tabs.contacts', {
+    url: '/contacts',
     views: {
-      'about-tab': {
-        templateUrl: 'templates/about.html',
-        controller: 'AboutTabCtrl'
+      'contacts-tab': {
+        templateUrl: 'templates/contacts.html',
+        controller: 'ContactsTabCtrl'
       }
     }
   });
@@ -100,7 +154,7 @@ angular.module('qisehuaApp', ['ionic'])
     $timeout(function() {
       $state.go('tabs.home');
       $ionicLoading.hide();
-    }, 1000);
+    }, 500);
   };
 
 })
@@ -154,6 +208,84 @@ angular.module('qisehuaApp', ['ionic'])
   }, 2000);
 })
 
+.controller('FlowerCtrl', function($scope, $state, $timeout, $ionicLoading){
+  console.log('FlowerCtrl');
+  var loading = $ionicLoading.show({
+    content: '<img src="img/loading.gif" alt="加载中..." />'
+  });
+
+  $timeout(function() {
+    $('#home-page-content').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.hny.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#flower-page-content');
+    $ionicLoading.hide();
+  }, 2000);
+})
+
+.controller('ServiceCtrl', function($scope, $state, $timeout, $ionicLoading){
+  console.log('ServiceCtrl');
+  var loading = $ionicLoading.show({
+    content: '<img src="img/loading.gif" alt="加载中..." />'
+  });
+
+  $timeout(function() {
+    $('#home-page-content').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.fw.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#service-page-content');
+    $ionicLoading.hide();
+  }, 2000);
+})
+
+.controller('BusinessCtrl', function($scope, $state, $timeout, $ionicLoading){
+  console.log('BusinessCtrl');
+  var loading = $ionicLoading.show({
+    content: '<img src="img/loading.gif" alt="加载中..." />'
+  });
+
+  $timeout(function() {
+    $('#home-page-content').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.qsh.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#business-page-content');
+    $ionicLoading.hide();
+  }, 2000);
+})
+
+.controller('AboutUsCtrl', function($scope, $state, $timeout, $ionicLoading){
+  console.log('AboutUsCtrl');
+  var loading = $ionicLoading.show({
+    content: '<img src="img/loading.gif" alt="加载中..." />'
+  });
+
+  $timeout(function() {
+    $('#home-page-content').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/about/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#about-us-page-content');
+    $ionicLoading.hide();
+  }, 2000);
+})
+
+.controller('NewsCtrl', function($scope, $state, $timeout, $ionicLoading){
+  console.log('NewsCtrl');
+  var loading = $ionicLoading.show({
+    content: '<img src="img/loading.gif" alt="加载中..." />'
+  });
+
+  $timeout(function() {
+    $('#home-page-content').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/news/news.php?lang=cn&class2=4" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#news-page-content');
+    $ionicLoading.hide();
+  }, 2000);
+})
+
+.controller('FriendlyLinksCtrl', function($scope, $state, $timeout, $ionicLoading){
+  console.log('FriendlyLinksCtrl');
+  var loading = $ionicLoading.show({
+    content: '<img src="img/loading.gif" alt="加载中..." />'
+  });
+
+  $timeout(function() {
+    $('#home-page-content').empty();
+    $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/link/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#friendly-links-page-content');
+    $ionicLoading.hide();
+  }, 2000);
+})
+
 .controller('MapTabCtrl', function($scope, $state, $ionicLoading, $compile) {
   console.log('MapTabCtrl');
 
@@ -193,8 +325,8 @@ angular.module('qisehuaApp', ['ionic'])
 
 })
 
-.controller('AboutTabCtrl', function($scope, $state) {
-  console.log('AboutTabCtrl');
+.controller('ContactsTabCtrl', function($scope, $state) {
+  console.log('ContactsTabCtrl');
 
   //document.getElementsByTagName("ion-nav-bar")[0].style.display = '';
 
@@ -231,7 +363,7 @@ angular.module('qisehuaApp', ['ionic'])
     } else {
       $state.go('login');
     }
-    
+
     // var quitPopup = $ionicPopup.confirm({
     //   title: '<strong>系统提示</strong>',
     //   template: '你确定要退出应用吗?',
