@@ -1,1 +1,1 @@
-cn.bt3s.*
+cn.bt3s.MobileCommunity
