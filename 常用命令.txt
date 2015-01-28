@@ -22,3 +22,7 @@ http://support.apple.com/en-us/HT201236
 编译项目: ionic build ios/android
 运行项目: ionic emulate ios/android
 调试项目: ionic serve
+
+6.Sass命令
+安装：sudo gem install sass
+编译：sass ionic.scss ../css/ionic.app.css
