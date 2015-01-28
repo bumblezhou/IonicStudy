@@ -35,7 +35,6 @@ angular.module('easyPhotos', ['ionic'])
     controller: 'TabsCtrl'
   })
   .state('tabs.home', {
-    //cache: false,
     url: '/home',
     views: {
       'home-tab': {
@@ -45,7 +44,6 @@ angular.module('easyPhotos', ['ionic'])
     }
   })
   .state('tabs.about-us', {
-    //cache: false,
     url: '/about-us',
     views: {
       'about-us-tab': {
@@ -55,7 +53,6 @@ angular.module('easyPhotos', ['ionic'])
     }
   })
   .state('tabs.service', {
-    //cache: false,
     url: '/service',
     views: {
       'service-tab': {
@@ -83,44 +80,96 @@ angular.module('easyPhotos', ['ionic'])
 
 })
 
-.controller('HomeTabCtrl', function($scope, $state) {
+.controller('HomeTabCtrl', function($scope, $state, $ionicPopup, $ionicActionSheet, $timeout) {
   console.log('HomeTabCtrl');
+
+  $scope.takeImage = function(){
+    var options = {
+      quality: 50,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA
+    };
+
+    navigator.camera.getPicture(
+      function(imageData){
+        var image = document.getElementById('myImage');
+        image.src = "data:image/jpeg;base64," + imageData;
+        uploadImageConfirm();
+      },
+      function(message){
+        var sysPopup = $ionicPopup.confirm({
+          title: '<strong>系统提示</strong>',
+          template: message,
+          okText: '确认',
+          cancelText: '取消'
+        });
+        sysPopup.then(function (res) {
+          if (res) {
+
+          } else {
+            // Don't close
+          }
+        });
+      },
+      options
+    );
+  };
+
+  // Triggered on a button click, or some other target
+  $scope.uploadImageConfirm = function() {
+
+    // Show the action sheet
+    var hideSheet = $ionicActionSheet.show({
+      buttons: [
+        { text: '<b>上传</b>' },
+        { text: '重拍' }
+      ],
+      // destructiveText: '删除',
+      titleText: '系统提示',
+      cancelText: '取消',
+      cancel: function() {
+        console.log('Cancel Button Clicked.');
+        var image = document.getElementById('myImage');
+        image.src = '';
+      },
+      // destructiveButtonClicked: function(){
+      //   console.log('Destructive Button Clicked.');
+      // },
+      buttonClicked: function(index) {
+        if(0 == index){
+          console.log("上传 button Clicked.");
+        }
+        if(1 == index){
+          console.log("重拍 button Clicked.");
+          takeImage();
+        }
+        return true;
+      }
+    });
+
+    // For example's sake, hide the sheet after two seconds
+    $timeout(function() {
+      hideSheet();
+    }, 2000);
+
+  };
 
 })
 
-.controller('TabsCtrl', function($scope, $state, $ionicPopup, $ionicTabsDelegate) {
+.controller('TabsCtrl', function($scope, $state, $timeout, $ionicLoading) {
   console.log('TabsCtrl');
+
   $scope.tabsStyle = 'tabs-icon-top tabs-positive pane tabs-bottom tabs-standard';
 
   $scope.quitConfirm = function() {
-
     if(ionic.Platform.isAndroid()){
       ionic.Platform.exitApp();
       //navigator.app.exitApp();
     } else {
       $state.go('welcome');
     }
-
-    // var quitPopup = $ionicPopup.confirm({
-    //   title: '<strong>系统提示</strong>',
-    //   template: '你确定要退出应用吗?',
-    //   okText: '退出',
-    //   cancelText: '取消'
-    // });
-    //
-    // quitPopup.then(function (res) {
-    //   if (res) {
-    //     if(ionic.Platform.isAndroid()){
-    //       ionic.Platform.exitApp();
-    //       //navigator.app.exitApp();
-    //     } else {
-    //       $state.go('login');
-    //     }
-    //   } else {
-    //     // Don't close
-    //   }
-    // });
   };
+
 })
 
 .controller('AboutUsTabCtrl', function($scope, $state, $ionicPopup, $ionicTabsDelegate) {
