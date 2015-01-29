@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('easyPhotos', ['ionic'])
+angular.module('easyPhotos', ['ionic', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -80,44 +80,32 @@ angular.module('easyPhotos', ['ionic'])
 
 })
 
-.controller('HomeTabCtrl', function($scope, $state, $ionicPopup, $ionicActionSheet, $timeout) {
+.controller('HomeTabCtrl', function($scope, $state, $ionicActionSheet, $timeout, $cordovaCamera) {
   console.log('HomeTabCtrl');
 
   $scope.takeImage = function(){
-    var options = {
-      quality: 50,
-      destinationType: Camera.DestinationType.DATA_URL,
-      sourceType: Camera.PictureSourceType.CAMERA
-    };
+    document.addEventListener("deviceready", function () {
+      var options = {
+        quality: 50,
+        destinationType: Camera.DestinationType.DATA_URL,
+        sourceType: Camera.PictureSourceType.CAMERA,
+        saveToPhotoAlbum: false,
+        encodingType: Camera.EncodingType.JPEG,
+        popoverOptions: CameraPopoverOptions
+      };
 
-    navigator.camera.getPicture(
-      function(imageData){
+      $cordovaCamera.getPicture(options).then(function(imageData) {
         var image = document.getElementById('myImage');
         image.src = "data:image/jpeg;base64," + imageData;
         uploadImageConfirm();
-      },
-      function(message){
-        var sysPopup = $ionicPopup.confirm({
-          title: '<strong>系统提示</strong>',
-          template: message,
-          okText: '确认',
-          cancelText: '取消'
-        });
-        sysPopup.then(function (res) {
-          if (res) {
-
-          } else {
-            // Don't close
-          }
-        });
-      },
-      options
-    );
+      }, function(err) {
+        // error
+      });
+    }, false);
   };
 
   // Triggered on a button click, or some other target
   $scope.uploadImageConfirm = function() {
-
     // Show the action sheet
     var hideSheet = $ionicActionSheet.show({
       buttons: [
@@ -141,17 +129,15 @@ angular.module('easyPhotos', ['ionic'])
         }
         if(1 == index){
           console.log("重拍 button Clicked.");
-          takeImage();
+          $scope.takeImage();
         }
         return true;
       }
     });
-
     // For example's sake, hide the sheet after two seconds
     $timeout(function() {
       hideSheet();
     }, 2000);
-
   };
 
 })
