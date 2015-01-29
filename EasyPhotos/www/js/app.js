@@ -80,8 +80,16 @@ angular.module('easyPhotos', ['ionic', 'ngCordova'])
 
 })
 
-.controller('HomeTabCtrl', function($scope, $state, $ionicActionSheet, $timeout, $cordovaCamera) {
+.controller('HomeTabCtrl', function($scope, $state, $ionicActionSheet, $timeout, $cordovaCamera, $cordovaGeolocation) {
   console.log('HomeTabCtrl');
+
+  var posOptions = {timeout: 10000, enableHighAccuracy: false};
+  $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+    $scope.lat  = position.coords.latitude;
+    $scope.long = position.coords.longitude;
+  }, function(err) {
+    // error
+  });
 
   $scope.takeImage = function(){
     document.addEventListener("deviceready", function () {
