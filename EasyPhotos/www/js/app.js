@@ -80,32 +80,41 @@ angular.module('easyPhotos', ['ionic', 'ngCordova'])
 
 })
 
-.controller('HomeTabCtrl', function($scope, $state, $ionicActionSheet, $timeout, $cordovaCamera, $cordovaGeolocation) {
+.controller('HomeTabCtrl', function($scope, $state, $ionicActionSheet, $timeout, $cordovaCamera, $cordovaGeolocation, $cordovaFileTransfer) {
   console.log('HomeTabCtrl');
 
-  var posOptions = {timeout: 10000, enableHighAccuracy: false};
-  $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-    $scope.lat  = position.coords.latitude;
-    $scope.long = position.coords.longitude;
-  }, function(err) {
-    // error
-  });
+  $scope.myImgUrl = 'http://placehold.it/320x568';
+
+  // Get current Geo Position
+  // var posOptions = {timeout: 10000, enableHighAccuracy: false};
+  // $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+  //   $scope.lat  = position.coords.latitude;
+  //   $scope.long = position.coords.longitude;
+  // }, function(err) {
+  //   // error
+  // });
 
   $scope.takeImage = function(){
     document.addEventListener("deviceready", function () {
       var options = {
         quality: 50,
-        destinationType: Camera.DestinationType.DATA_URL,
+        //destinationType: Camera.DestinationType.DATA_URL,
+        destinationType: Camera.DestinationType.FILE_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
-        saveToPhotoAlbum: false,
+        saveToPhotoAlbum: true,
         encodingType: Camera.EncodingType.JPEG,
         popoverOptions: CameraPopoverOptions
       };
 
-      $cordovaCamera.getPicture(options).then(function(imageData) {
-        var image = document.getElementById('myImage');
-        image.src = "data:image/jpeg;base64," + imageData;
-        uploadImageConfirm();
+      // $cordovaCamera.getPicture(options).then(function(imageData) {
+      //   var image = document.getElementById('myImage');
+      //   image.src = "data:image/jpeg;base64," + imageData;
+      //   uploadImageConfirm();
+      // }, function(err) {
+      //   // error
+      // });
+      $cordovaCamera.getPicture(options).then(function(imageURI) {
+        $scope.myImgUrl = imageURI;
       }, function(err) {
         // error
       });
@@ -122,30 +131,62 @@ angular.module('easyPhotos', ['ionic', 'ngCordova'])
       ],
       // destructiveText: '删除',
       titleText: '系统提示',
-      cancelText: '取消',
-      cancel: function() {
-        console.log('Cancel Button Clicked.');
-        var image = document.getElementById('myImage');
-        image.src = '';
-      },
+      //cancelText: '取消',
+      //cancel: function() {
+      //  console.log('Cancel Button Clicked.');
+      //  $scope.myImgUrl = 'http://placehold.it/320x568';
+      //},
       // destructiveButtonClicked: function(){
       //   console.log('Destructive Button Clicked.');
       // },
       buttonClicked: function(index) {
         if(0 == index){
           console.log("上传 button Clicked.");
+          $scope.uploadImage();
         }
         if(1 == index){
           console.log("重拍 button Clicked.");
           $scope.takeImage();
         }
-        return true;
+        return false;
       }
     });
     // For example's sake, hide the sheet after two seconds
     $timeout(function() {
       hideSheet();
     }, 2000);
+  };
+
+  $scope.uploadImage = function(){
+    if($scope.myImgUrl == 'http://placehold.it/320x568'){
+      return false;
+    }
+    var filePath = $scope.myImgUrl;
+    var server = "http://192.168.1.2/AngularWebApp/FileUploadHandler.ashx";
+    var options = {user: 'zhou', action: 'u'};
+
+    $cordovaFileTransfer.upload(server, filePath, options)
+    .then(function(result) {
+      // Success!
+      var successDialog = $ionicPopup.alert({
+        title: '系统提示',
+        template: '图片上传成功!'
+      });
+      successDialog.then(function(res) {
+
+      });
+    }, function(err) {
+      // Error
+      var errorDialog = $ionicPopup.alert({
+        title: '系统提示',
+        template: '图片上传失败，原因：' + err
+      });
+      errorDialog.then(function(res) {
+
+      });
+    }, function (progress) {
+      // constant progress updates
+    });
   };
 
 })

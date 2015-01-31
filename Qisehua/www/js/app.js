@@ -228,8 +228,9 @@ angular.module('qisehuaApp', ['ionic'])
   });
 
   $('<iframe id="nav-view-main-frame" src="http://www.fw.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#service-page-content .scroll');
-  //$('#service-page-content .scroll').height("100%");
-  $ionicLoading.hide();
+  $("#nav-view-main-frame").load(function(){
+    $ionicLoading.hide();
+  });
 
 })
 

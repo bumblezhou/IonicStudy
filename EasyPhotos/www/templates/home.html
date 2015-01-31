@@ -3,8 +3,10 @@
     警备随手拍-首页
   </ion-nav-title>
   <ion-content padding="true" class="has-header">
+    <!--
     <div>当前位置:{{lat}},{{long}}</div>
-    <img id="myImage" ng-click="uploadImageConfirm();" style="height: 350px; width: 100%;"/>
+    -->
+    <img id="myImage" ng-src="{{myImgUrl}}" ng-click="uploadImageConfirm();" style="height: 350px; width: 100%;"/>
     <button class="button button-block button-balanced" ng-click="takeImage();">
       拍照
     </button>
