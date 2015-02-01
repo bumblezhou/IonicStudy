@@ -86,13 +86,13 @@ angular.module('easyPhotos', ['ionic', 'ngCordova'])
   $scope.myImgUrl = 'http://placehold.it/320x568';
 
   // Get current Geo Position
-  // var posOptions = {timeout: 10000, enableHighAccuracy: false};
-  // $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
-  //   $scope.lat  = position.coords.latitude;
-  //   $scope.long = position.coords.longitude;
-  // }, function(err) {
-  //   // error
-  // });
+  var posOptions = {timeout: 10000, enableHighAccuracy: false};
+  $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
+    $scope.lat  = position.coords.latitude;
+    $scope.long = position.coords.longitude;
+  }, function(err) {
+    // error
+  });
 
   $scope.takeImage = function(){
     document.addEventListener("deviceready", function () {
@@ -165,7 +165,7 @@ angular.module('easyPhotos', ['ionic', 'ngCordova'])
     var server = "http://192.168.1.2/AngularWebApp/FileUploadHandler.ashx";
     var options = {user: 'zhou', action: 'u'};
 
-    $cordovaFileTransfer.upload(server, filePath, options)
+    $cordovaFileTransfer.upload(server, filePath, options, true)
     .then(function(result) {
       // Success!
       var successDialog = $ionicPopup.alert({
