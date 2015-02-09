@@ -80,7 +80,7 @@ angular.module('easyPhotos', ['ionic', 'ngCordova'])
 
 })
 
-.controller('HomeTabCtrl', function($scope, $state, $ionicActionSheet, $timeout, $cordovaCamera, $cordovaGeolocation, $cordovaFileTransfer) {
+.controller('HomeTabCtrl', function($scope, $state, $ionicActionSheet, $timeout, $ionicPopup, $cordovaCamera, $cordovaGeolocation, $cordovaFileTransfer) {
   console.log('HomeTabCtrl');
 
   $scope.myImgUrl = 'http://placehold.it/320x568';
@@ -97,13 +97,13 @@ angular.module('easyPhotos', ['ionic', 'ngCordova'])
   $scope.takeImage = function(){
     document.addEventListener("deviceready", function () {
       var options = {
-        quality: 50,
-        //destinationType: Camera.DestinationType.DATA_URL,
+        quality: 80,
+        ////destinationType: Camera.DestinationType.DATA_URL,
         destinationType: Camera.DestinationType.FILE_URL,
         sourceType: Camera.PictureSourceType.CAMERA,
         saveToPhotoAlbum: true,
-        encodingType: Camera.EncodingType.JPEG,
-        popoverOptions: CameraPopoverOptions
+        //encodingType: Camera.EncodingType.JPEG,
+        //popoverOptions: CameraPopoverOptions
       };
 
       // $cordovaCamera.getPicture(options).then(function(imageData) {
@@ -117,6 +117,7 @@ angular.module('easyPhotos', ['ionic', 'ngCordova'])
         $scope.myImgUrl = imageURI;
       }, function(err) {
         // error
+        console.log(err);
       });
     }, false);
   };
@@ -162,27 +163,30 @@ angular.module('easyPhotos', ['ionic', 'ngCordova'])
       return false;
     }
     var filePath = $scope.myImgUrl;
-    var server = "http://192.168.1.2/AngularWebApp/FileUploadHandler.ashx";
-    var options = {user: 'zhou', action: 'u'};
+    var server = encodeURI("http://192.168.1.2/AngularWebApp/FileUploadHandler.ashx?user=zhou&action=u");
+    var options = {lat:235,ltu:283};
 
     $cordovaFileTransfer.upload(server, filePath, options, true)
     .then(function(result) {
+      console.log(result);
       // Success!
       var successDialog = $ionicPopup.alert({
         title: '系统提示',
         template: '图片上传成功!'
       });
       successDialog.then(function(res) {
-
+        $scope.myImgUrl = 'http://placehold.it/320x568';
+        console.log('图片上传成功!');
       });
     }, function(err) {
+      console.log(err);
       // Error
       var errorDialog = $ionicPopup.alert({
         title: '系统提示',
         template: '图片上传失败，原因：' + err
       });
       errorDialog.then(function(res) {
-
+        console.log('图片上传失败!');
       });
     }, function (progress) {
       // constant progress updates
