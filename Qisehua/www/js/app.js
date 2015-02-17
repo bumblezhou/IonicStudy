@@ -403,7 +403,8 @@ angular.module('qisehuaApp', ['ionic'])
 
     upgradePopup.then(function (res) {
       if (res) {
-        window.open('http://www.klmyqsh.com/klmyqsh.apk', '_blank');
+        //window.location.href = 'http://www.klmyqsh.com/klmyqsh.apk';
+        window.open('http://www.klmyqsh.com/klmyqsh.apk', '_system');
       } else {
         // Don't close
       }
