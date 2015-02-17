@@ -150,6 +150,14 @@ angular.module('qisehuaApp', ['ionic'])
 
 })
 
+.controller('NavBarCtrl', function($scope, $state, $ionicNavBarDelegate, $ionicTabsDelegate) {
+  console.log('NavBarCtrl');
+  $scope.goBackHandler = function() {
+    $("#main-tabs").attr("class", 'tabs-icon-top tabs-positive pane tabs-bottom tabs-standard');
+    $ionicTabsDelegate.select(0);
+  };
+})
+
 .controller('LoginCtrl', function($scope, $state, $timeout, $ionicLoading) {
 
   $scope.login = function() {
@@ -166,7 +174,6 @@ angular.module('qisehuaApp', ['ionic'])
 
 .controller('HomeTabCtrl', function($scope, $state) {
   console.log('HomeTabCtrl');
-
 })
 
 .controller('SuperMarketCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -180,6 +187,8 @@ angular.module('qisehuaApp', ['ionic'])
     $ionicLoading.hide();
   });
 
+  $("#main-tabs").attr("class", 'tabs-icon-top tabs-positive pane tabs-bottom tabs-standard tabs-item-hide');
+
 })
 
 .controller('CateringCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -192,6 +201,8 @@ angular.module('qisehuaApp', ['ionic'])
   $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
   });
+
+  $("#main-tabs").attr("class", 'tabs-icon-top tabs-positive pane tabs-bottom tabs-standard tabs-item-hide');
 
 })
 
@@ -326,8 +337,6 @@ angular.module('qisehuaApp', ['ionic'])
 .controller('ContactsTabCtrl', function($scope, $state) {
   console.log('ContactsTabCtrl');
 
-  //$("ion-nav-bar").show();
-
   $scope.dailConfirm = function() {
     var dailPopup = $ionicPopup.confirm({
       title: '<strong>系统提示</strong>',
@@ -357,31 +366,30 @@ angular.module('qisehuaApp', ['ionic'])
   $scope.quitConfirm = function() {
 
     if(ionic.Platform.isAndroid()){
-      ionic.Platform.exitApp();
-      //navigator.app.exitApp();
+      //ionic.Platform.exitApp();
+      var quitPopup = $ionicPopup.confirm({
+        title: '<strong>系统提示</strong>',
+        template: '你确定要退出应用吗?',
+        okText: '退出',
+        cancelText: '取消'
+      });
+
+      quitPopup.then(function (res) {
+        if (res) {
+          if(ionic.Platform.isAndroid()){
+            ionic.Platform.exitApp();
+          } else {
+            $state.go('login');
+          }
+        } else {
+          // Don't close
+        }
+      });
+
     } else {
       $state.go('login');
     }
 
-    // var quitPopup = $ionicPopup.confirm({
-    //   title: '<strong>系统提示</strong>',
-    //   template: '你确定要退出应用吗?',
-    //   okText: '退出',
-    //   cancelText: '取消'
-    // });
-    //
-    // quitPopup.then(function (res) {
-    //   if (res) {
-    //     if(ionic.Platform.isAndroid()){
-    //       ionic.Platform.exitApp();
-    //       //navigator.app.exitApp();
-    //     } else {
-    //       $state.go('login');
-    //     }
-    //   } else {
-    //     // Don't close
-    //   }
-    // });
   };
 
   // An alert dialog
@@ -395,7 +403,6 @@ angular.module('qisehuaApp', ['ionic'])
 
     upgradePopup.then(function (res) {
       if (res) {
-        //document.location.href = 'http://www.klmyqsh.com/klmyqsh.apk';
         window.open('http://www.klmyqsh.com/klmyqsh.apk', '_blank');
       } else {
         // Don't close
