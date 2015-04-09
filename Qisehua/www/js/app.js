@@ -217,6 +217,8 @@ angular.module('qisehuaApp', ['ionic'])
     $ionicLoading.hide();
   });
 
+  $("#main-tabs").attr("class", 'tabs-icon-top tabs-positive pane tabs-bottom tabs-standard tabs-item-hide');
+
 })
 
 .controller('FlowerCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -230,6 +232,8 @@ angular.module('qisehuaApp', ['ionic'])
     $ionicLoading.hide();
   });
 
+  $("#main-tabs").attr("class", 'tabs-icon-top tabs-positive pane tabs-bottom tabs-standard tabs-item-hide');
+
 })
 
 .controller('ServiceCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -242,6 +246,8 @@ angular.module('qisehuaApp', ['ionic'])
   $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
   });
+
+  $("#main-tabs").attr("class", 'tabs-icon-top tabs-positive pane tabs-bottom tabs-standard tabs-item-hide');
 
 })
 
