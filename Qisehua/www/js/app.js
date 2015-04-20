@@ -3,7 +3,20 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('qisehuaApp', ['ionic'])
+angular.module('qisehuaApp', ['ionic', 'ionic.service.core', 'ionic.service.push'])
+
+.config(['$ionicAppProvider', function($ionicAppProvider) {
+  // Identify app
+  $ionicAppProvider.identify({
+    // Your App ID
+    app_id: '07af441c',
+    // The public API key services will use for this app
+    api_key: '75e243c2b9fdff1f64099ad272893df25c0d572e77708176',
+    // Your GCM sender ID/project number (Uncomment if supporting Android)
+    //gcm_id: 'YOUR_GCM_ID'
+  });
+
+}])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
