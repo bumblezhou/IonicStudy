@@ -1,0 +1,23 @@
+<ion-view title="Tabs Controller" ng-controller="tabsController">
+    <ion-tabs class="tabs-stable tabs-icon-top" class="{{tabsStyle}}">
+        <ion-tab title="首页" icon="ion-android-home" href="#/index/home">
+            <ion-nav-view name="tab_home"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="分割" icon="ion-crop" href="#/index/separation">
+            <ion-nav-view name="tab_separation"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="检疫" icon="ion-ios-flask" href="#/index/quarantine">
+            <ion-nav-view name="tab_quarantine"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="排酸" icon="ion-ios-medical" href="#/index/freeze">
+            <ion-nav-view name="tab_freeze"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="出厂" icon="ion-android-car" href="#/index/deliver">
+            <ion-nav-view name="tab_deliver"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="升级" icon="ion-refresh" class="{{whetherHideItem}}" ng-click="upgradeConfirm();">
+        </ion-tab>
+        <ion-tab title="退出" icon="ion-log-out" ng-click="quitConfirm();">
+        </ion-tab>
+    </ion-tabs>
+</ion-view>
