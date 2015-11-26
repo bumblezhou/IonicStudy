@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('qisehuaApp', ['ionic', 'ionic.service.core', 'ionic.service.push'])
+var qisehuaApp = angular.module('qisehuaApp', ['ionic', 'ionic.service.core', 'ionic.service.push', 'ngCordova']);
 
-.config(['$ionicAppProvider', function($ionicAppProvider) {
+qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
   // Identify app
   $ionicAppProvider.identify({
     // Your App ID
@@ -129,15 +129,24 @@ angular.module('qisehuaApp', ['ionic', 'ionic.service.core', 'ionic.service.push
       }
     }
   })
-  .state('tabs.friendly-links', {
-    url: '/friendly-links',
+  .state('tabs.qrcode-scanner', {
+    url: '/qrcode-scanner/:location',
     views: {
       'home-tab': {
-        templateUrl: 'templates/friendly-links/index.html',
-        controller: 'FriendlyLinksCtrl'
+        templateUrl: 'templates/qrcode-scanner/index.html',
+        controller: 'QrcodeScannerCtrl'
       }
     }
   })
+  // .state('tabs.friendly-links', {
+  //   url: '/friendly-links',
+  //   views: {
+  //     'home-tab': {
+  //       templateUrl: 'templates/friendly-links/index.html',
+  //       controller: 'FriendlyLinksCtrl'
+  //     }
+  //   }
+  // })
   .state('tabs.map', {
     //cache: false,
     url: '/map',
@@ -185,8 +194,27 @@ angular.module('qisehuaApp', ['ionic', 'ionic.service.core', 'ionic.service.push
 
 })
 
-.controller('HomeTabCtrl', function($scope, $state) {
+.controller('HomeTabCtrl', function($scope, $state, $cordovaBarcodeScanner) {
   console.log('HomeTabCtrl');
+  //肉品追踪
+  $scope.scanQrcode = function() {
+    $cordovaBarcodeScanner.scan().then(function(imageData) {
+      //alert(imageData.text);
+      $scope.scanResult = "";
+      $scope.scanFormat = "";
+      console.log("Barcode Format -> " + imageData.format);
+      console.log("Barcode Text -> " + imageData.text);
+      console.log("Cancelled -> " + imageData.cancelled);
+      //$scope.scanResult = imageData.text;
+      //$scope.scanFormat = imageData.format;
+      $state.go("tabs.qrcode-scanner", { location: 'http://' + 'www.klmyqsh.com/zs?id=y0000002141' });
+    }, function(error) {
+      //$scope.scanResult = "扫描出错！详细信息：" + error;
+      //$scope.scanFormat = "";
+      console.log("An error happened -> " + error);
+    });
+  };
+
 })
 
 .controller('SuperMarketCtrl', function($scope, $state, $timeout, $ionicLoading){
@@ -303,18 +331,32 @@ angular.module('qisehuaApp', ['ionic', 'ionic.service.core', 'ionic.service.push
 
 })
 
-.controller('FriendlyLinksCtrl', function($scope, $state, $timeout, $ionicLoading){
-  console.log('FriendlyLinksCtrl');
+.controller('QrcodeScannerCtrl', function($scope, $state, $stateParams, $timeout, $ionicLoading){
+  console.log('QrcodeScannerCtrl');
+
   var loading = $ionicLoading.show({
-    content: '<img src="img/loading.gif" alt="加载中..." />'
+   content: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/link/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#friendly-links-page-content .scroll');
+  $('<iframe id="nav-view-main-frame" src="' + $stateParams.location + '" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#qrcode-scanner-page-content .scroll');
   $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
   });
 
 })
+
+// .controller('FriendlyLinksCtrl', function($scope, $state, $timeout, $ionicLoading){
+//   console.log('FriendlyLinksCtrl');
+//   var loading = $ionicLoading.show({
+//     content: '<img src="img/loading.gif" alt="加载中..." />'
+//   });
+//
+//   $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/link/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#friendly-links-page-content .scroll');
+//   $("#nav-view-main-frame").load(function(){
+//     $ionicLoading.hide();
+//   });
+//
+// })
 
 .controller('MapTabCtrl', function($scope, $state, $ionicLoading, $compile) {
   console.log('MapTabCtrl');

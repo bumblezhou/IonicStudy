@@ -16,6 +16,10 @@
   },
   "cordovaPlugins": [
     "https://github.com/phonegap-build/PushPlugin.git",
-    "org.apache.cordova.inappbrowser"
+    "org.apache.cordova.inappbrowser",
+    "https://github.com/wildabeast/BarcodeScanner.git"
+  ],
+  "cordovaPlatforms": [
+    "ios"
   ]
 }
