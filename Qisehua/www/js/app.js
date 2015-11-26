@@ -120,15 +120,24 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
       }
     }
   })
-  .state('tabs.news', {
-    url: '/news',
+  .state('tabs.districts', {
+    url: '/districts',
     views: {
       'home-tab': {
-        templateUrl: 'templates/news/index.html',
-        controller: 'NewsCtrl'
+        templateUrl: 'templates/districts/index.html',
+        controller: 'DistrictsCtrl'
       }
     }
   })
+  // .state('tabs.news', {
+  //   url: '/news',
+  //   views: {
+  //     'home-tab': {
+  //       templateUrl: 'templates/news/index.html',
+  //       controller: 'NewsCtrl'
+  //     }
+  //   }
+  // })
   .state('tabs.qrcode-scanner', {
     url: '/qrcode-scanner/:location',
     views: {
@@ -322,18 +331,31 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 
 })
 
-.controller('NewsCtrl', function($scope, $state, $timeout, $ionicLoading){
-  console.log('NewsCtrl');
+.controller('DistrictsCtrl', function($scope, $state, $timeout, $ionicLoading){
+  console.log('DistrictsCtrl');
   var loading = $ionicLoading.show({
     template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/news/news.php?lang=cn&class2=4" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#news-page-content .scroll');
+  $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/zhsq/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#districts-page-content .scroll');
   $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
   });
 
 })
+
+// .controller('NewsCtrl', function($scope, $state, $timeout, $ionicLoading){
+//   console.log('NewsCtrl');
+//   var loading = $ionicLoading.show({
+//     template: '<img src="img/loading.gif" alt="加载中..." />'
+//   });
+//
+//   $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/news/news.php?lang=cn&class2=4" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#news-page-content .scroll');
+//   $("#nav-view-main-frame").load(function(){
+//     $ionicLoading.hide();
+//   });
+//
+// })
 
 .controller('QrcodeScannerCtrl', function($scope, $state, $stateParams, $timeout, $ionicLoading){
   console.log('QrcodeScannerCtrl');
@@ -389,7 +411,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
     message:'克拉玛依七色花电子商务有限公司',
     offset:offset
   }
-  var infoWindow = new BMap.InfoWindow('<div style="border-top:1px solid #999; margin:5px 0px 0px; padding-top:5px;">地址：克拉玛依天山路副51号<br />电话：0990-6977191<br />QQ:88276429</div>', opts);
+  var infoWindow = new BMap.InfoWindow('<div style="border-top:1px solid #999; margin:5px 0px 0px; padding-top:5px;">地址：克拉玛依天山路副51号<br />电话：0990-6977191<br /> QQ：88276429</div>', opts);
   // 创建信息窗口对象
   map.openInfoWindow(infoWindow,point); //开启信息窗口
   function showInfo(e){
