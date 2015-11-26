@@ -184,7 +184,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 
   $scope.login = function() {
     var loading = $ionicLoading.show({
-      content: '<img src="img/loading.gif" alt="加载中..." />'
+      template: '<img src="img/loading.gif" alt="加载中..." />'
     });
     $timeout(function() {
       $state.go('tabs.home');
@@ -207,7 +207,11 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
       console.log("Cancelled -> " + imageData.cancelled);
       //$scope.scanResult = imageData.text;
       //$scope.scanFormat = imageData.format;
-      $state.go("tabs.qrcode-scanner", { location: 'http://' + 'www.klmyqsh.com/zs?id=y0000002141' });
+      //$state.go("tabs.qrcode-scanner", { location: 'http://' + 'www.klmyqsh.com/zs?id=y0000002141' });
+      if(!imageData.cancelled){
+        $state.go("tabs.qrcode-scanner", { location: imageData.text });
+      }
+
     }, function(error) {
       //$scope.scanResult = "扫描出错！详细信息：" + error;
       //$scope.scanFormat = "";
@@ -220,7 +224,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 .controller('SuperMarketCtrl', function($scope, $state, $timeout, $ionicLoading){
   console.log('SuperMarketCtrl');
   var loading = $ionicLoading.show({
-   content: '<img src="img/loading.gif" alt="加载中..." />'
+   template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
   $('<iframe id="nav-view-main-frame" src="http://www.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#super-market-page-content .scroll');
@@ -235,7 +239,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 .controller('CateringCtrl', function($scope, $state, $timeout, $ionicLoading){
   console.log('CateringCtrl');
   var loading = $ionicLoading.show({
-    content: '<img src="img/loading.gif" alt="加载中..." />'
+    template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
   $('<iframe id="nav-view-main-frame" src="http://www.dc.klmyms.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#catering-page-content .scroll');
@@ -250,7 +254,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 .controller('PharmacyCtrl', function($scope, $state, $timeout, $ionicLoading){
   console.log('PharmacyCtrl');
   var loading = $ionicLoading.show({
-    content: '<img src="img/loading.gif" alt="加载中..." />'
+    template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
   $('<iframe id="nav-view-main-frame" src="http://www.klmyxtyd.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#pharmacy-page-content .scroll');
@@ -265,7 +269,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 .controller('FlowerCtrl', function($scope, $state, $timeout, $ionicLoading){
   console.log('FlowerCtrl');
   var loading = $ionicLoading.show({
-    content: '<img src="img/loading.gif" alt="加载中..." />'
+    template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
   $('<iframe id="nav-view-main-frame" src="http://www.hny.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#flower-page-content .scroll');
@@ -280,7 +284,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 .controller('ServiceCtrl', function($scope, $state, $timeout, $ionicLoading){
   console.log('ServiceCtrl');
   var loading = $ionicLoading.show({
-    content: '<img src="img/loading.gif" alt="加载中..." />'
+    template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
   $('<iframe id="nav-view-main-frame" src="http://www.fw.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#service-page-content .scroll');
@@ -295,7 +299,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 .controller('BusinessCtrl', function($scope, $state, $timeout, $ionicLoading){
   console.log('BusinessCtrl');
   var loading = $ionicLoading.show({
-    content: '<img src="img/loading.gif" alt="加载中..." />'
+    template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
   $('<iframe id="nav-view-main-frame" src="http://www.qsh.sbgwcs.com" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#business-page-content .scroll');
@@ -308,7 +312,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 .controller('AboutUsCtrl', function($scope, $state, $timeout, $ionicLoading){
   console.log('AboutUsCtrl');
   var loading = $ionicLoading.show({
-    content: '<img src="img/loading.gif" alt="加载中..." />'
+    template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
   $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/about/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#about-us-page-content .scroll');
@@ -321,7 +325,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 .controller('NewsCtrl', function($scope, $state, $timeout, $ionicLoading){
   console.log('NewsCtrl');
   var loading = $ionicLoading.show({
-    content: '<img src="img/loading.gif" alt="加载中..." />'
+    template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
   $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/news/news.php?lang=cn&class2=4" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#news-page-content .scroll');
@@ -335,7 +339,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
   console.log('QrcodeScannerCtrl');
 
   var loading = $ionicLoading.show({
-   content: '<img src="img/loading.gif" alt="加载中..." />'
+   template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
   $('<iframe id="nav-view-main-frame" src="' + $stateParams.location + '" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#qrcode-scanner-page-content .scroll');
@@ -348,7 +352,7 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
 // .controller('FriendlyLinksCtrl', function($scope, $state, $timeout, $ionicLoading){
 //   console.log('FriendlyLinksCtrl');
 //   var loading = $ionicLoading.show({
-//     content: '<img src="img/loading.gif" alt="加载中..." />'
+//     template: '<img src="img/loading.gif" alt="加载中..." />'
 //   });
 //
 //   $('<iframe id="nav-view-main-frame" src="http://www.klmyqsh.com/link/" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#friendly-links-page-content .scroll');
