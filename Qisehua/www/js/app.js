@@ -41,6 +41,11 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
     templateUrl: 'templates/login.html',
     controller: 'LoginCtrl'
   })
+  .state('index', {
+    url: '/index',
+    templateUrl: 'templates/index.html',
+    controller: 'IndexCtrl'
+  })
   .state('tabs', {
     url: '/tabs',
     abstract: true,
@@ -185,7 +190,8 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
   console.log('NavBarCtrl');
   $scope.goBackHandler = function() {
     $("#main-tabs").attr("class", 'tabs-icon-top tabs-positive pane tabs-bottom tabs-standard');
-    $ionicTabsDelegate.select(0);
+    //$ionicTabsDelegate.select(0);
+    $state.go('login');
   };
 })
 
@@ -196,10 +202,26 @@ qisehuaApp.config(['$ionicAppProvider', function($ionicAppProvider) {
       template: '<img src="img/loading.gif" alt="加载中..." />'
     });
     $timeout(function() {
-      $state.go('tabs.home');
+      $state.go('index');
       $ionicLoading.hide();
     }, 500);
   };
+
+  // $scope.enterWechatOfficialAccount = function(){
+  //   //window.location.href = "weixin://contacts/profile/klmysbgwcs";
+  // };
+})
+
+.controller('IndexCtrl', function($scope, $state, $timeout, $ionicLoading) {
+  console.log('IndexCtrl');
+  var loading = $ionicLoading.show({
+    template: '<img src="img/loading.gif" alt="加载中..." />'
+  });
+
+  $('<iframe id="nav-view-main-frame" src="http://www.wap.sbgwcs.com/xshop/shopHome.php" style="min-height:100vh;" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#index-page-content .scroll');
+  $("#nav-view-main-frame").load(function(){
+    $ionicLoading.hide();
+  });
 
 })
 

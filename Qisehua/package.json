@@ -17,7 +17,15 @@
   "cordovaPlugins": [
     "https://github.com/phonegap-build/PushPlugin.git",
     "org.apache.cordova.inappbrowser",
-    "https://github.com/wildabeast/BarcodeScanner.git"
+    "https://github.com/wildabeast/BarcodeScanner.git",
+    "https://github.com/xu-li/cordova-plugin-wechat",
+    {
+      "variables": {
+        "wechatappid": "wx4a525790c75c494f"
+      },
+      "locator": "https://github.com/xu-li/cordova-plugin-wechat",
+      "id": "xu.li.cordova.wechat"
+    }
   ],
   "cordovaPlatforms": [
     "ios",
