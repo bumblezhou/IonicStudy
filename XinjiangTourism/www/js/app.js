@@ -29,7 +29,7 @@ xinjiangTourismApp.controller('IndexCtrl', function($scope, $state, $timeout, $i
     template: '<img src="img/loading.gif" alt="加载中..." />'
   });
 
-  $('<iframe id="nav-view-main-frame" src="http://www.qxj.wap.klmyqsh.com/xshop/shopHome.php" style="min-height:100vh;" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#main_content .scroll');
+  $('<iframe id="nav-view-main-frame" src="http://www.qxj.wap.klmyqsh.com/xshop/shopHome.php" style="min-height:91vh;" height="100%" width="100%" frameborder="0"></iframe>').appendTo('#main_content .scroll');
   $("#nav-view-main-frame").load(function(){
     $ionicLoading.hide();
   });
