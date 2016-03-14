@@ -2,7 +2,7 @@
  * Copyright 2015 Drifty Co.
  * http://drifty.com/
  *
- * Ionic, v1.2.4
+ * Ionic, v1.2.1
  * A powerful HTML5 mobile app framework.
  * http://ionicframework.com/
  *
@@ -1780,7 +1780,7 @@ IonicModule
     },
 
     scrolling: {
-      jsScrolling: true
+      jsScrolling: false
     },
 
     spinner: {
@@ -1839,11 +1839,8 @@ IonicModule
     tabs: {
       style: 'striped',
       position: 'top'
-    },
-
-    scrolling: {
-      jsScrolling: false
     }
+
   });
 
   // Windows Phone
@@ -2310,10 +2307,9 @@ function($ionicLoadingConfig, $ionicBody, $ionicTemplateLoader, $ionicBackdrop, 
             }
             self.element.removeClass('active');
             $ionicBody.removeClass('loading-active');
-            self.element.removeClass('visible');
-            ionic.requestAnimationFrame(function() {
+            setTimeout(function() {
               !self.isShown && self.element.removeClass('visible');
-            });
+            }, 200);
           }
           $timeout.cancel(self.durationTimeout);
           self.isShown = false;
@@ -2563,7 +2559,7 @@ function($rootScope, $ionicBody, $compile, $timeout, $ionicPlatform, $ionicTempl
         self.$el.on('touchmove', function(e) {
           //Don't allow scrolling while open by dragging on backdrop
           var isInScroll = ionic.DomUtil.getParentOrSelfWithClass(e.target, 'scroll');
-          if (!isInScroll) {
+          if(!isInScroll) {
             e.preventDefault();
           }
         });
@@ -6829,15 +6825,6 @@ IonicModule
       startY = Math.floor(e.touches[0].screenY);
     }
 
-    function handleTouchstart(e) {
-      e.touches = e.touches || [{
-        screenX: e.screenX,
-        screenY: e.screenY
-      }];
-
-      startY = e.touches[0].screenY;
-    }
-
     function handleTouchend() {
       // reset Y
       startY = null;
@@ -6874,7 +6861,7 @@ IonicModule
       }];
 
       // Force mouse events to have had a down event first
-      if (!startY && e.type == 'mousemove') {
+      if(!startY && e.type == 'mousemove') {
         return;
       }
 
@@ -6887,16 +6874,14 @@ IonicModule
         startY = e.touches[0].screenY;
       }
 
-      deltaY = e.touches[0].screenY - startY;
-
-      // how far have we dragged so far?
       // kitkat fix for touchcancel events http://updates.html5rocks.com/2014/05/A-More-Compatible-Smoother-Touch
-      // Only do this if we're not on crosswalk
-      if (ionic.Platform.isAndroid() && ionic.Platform.version() === 4.4 && !ionic.Platform.isCrosswalk() && scrollParent.scrollTop === 0 && deltaY > 0) {
+      if (ionic.Platform.isAndroid() && ionic.Platform.version() === 4.4 && scrollParent.scrollTop === 0) {
         isDragging = true;
         e.preventDefault();
       }
 
+      // how far have we dragged so far?
+      deltaY = e.touches[0].screenY - startY;
 
       // if we've dragged up and back down in to native scroll territory
       if (deltaY - dragOffset <= 0 || scrollParent.scrollTop !== 0) {
@@ -7049,17 +7034,17 @@ IonicModule
     }
 
 
-    var touchStartEvent, touchMoveEvent, touchEndEvent;
+    var touchMoveEvent, touchEndEvent;
     if (window.navigator.pointerEnabled) {
-      touchStartEvent = 'pointerdown';
+      //touchStartEvent = 'pointerdown';
       touchMoveEvent = 'pointermove';
       touchEndEvent = 'pointerup';
     } else if (window.navigator.msPointerEnabled) {
-      touchStartEvent = 'MSPointerDown';
+      //touchStartEvent = 'MSPointerDown';
       touchMoveEvent = 'MSPointerMove';
       touchEndEvent = 'MSPointerUp';
     } else {
-      touchStartEvent = 'touchstart';
+      //touchStartEvent = 'touchstart';
       touchMoveEvent = 'touchmove';
       touchEndEvent = 'touchend';
     }
@@ -7074,7 +7059,6 @@ IonicModule
       }
 
 
-      ionic.on(touchStartEvent, handleTouchstart, scrollChild);
       ionic.on(touchMoveEvent, handleTouchmove, scrollChild);
       ionic.on(touchEndEvent, handleTouchend, scrollChild);
       ionic.on('mousedown', handleMousedown, scrollChild);
@@ -7087,7 +7071,6 @@ IonicModule
     };
 
     function destroy() {
-      ionic.off(touchStartEvent, handleTouchstart, scrollChild);
       ionic.off(touchMoveEvent, handleTouchmove, scrollChild);
       ionic.off(touchEndEvent, handleTouchend, scrollChild);
       ionic.off('mousedown', handleMousedown, scrollChild);
@@ -7345,7 +7328,6 @@ function($scope,
   };
 
   self.freezeScroll = scrollView.freeze;
-  self.freezeScrollShut = scrollView.freezeShut;
 
   self.freezeAllScrolls = function(shouldFreeze) {
     for (var i = 0; i < $ionicScrollDelegate._instances.length; i++) {
@@ -7527,10 +7509,9 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
     // equal 0, otherwise remove the class from the body element
     $ionicBody.enableClass((percentage !== 0), 'menu-open');
 
-    self.content.setCanScroll(percentage == 0);
+    freezeAllScrolls(false);
   };
 
-  /*
   function freezeAllScrolls(shouldFreeze) {
     if (shouldFreeze && !self.isScrollFreeze) {
       $ionicScrollDelegate.freezeAllScrolls(shouldFreeze);
@@ -7540,7 +7521,6 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
     }
     self.isScrollFreeze = shouldFreeze;
   }
-  */
 
   /**
    * Open the menu the given pixel amount.
@@ -7674,6 +7654,7 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
 
     isAsideExposed = shouldExposeAside;
     if ((self.left && self.left.isEnabled) && (self.right && self.right.isEnabled)) {
+      void 0;
       self.content.setMarginLeftAndRight(isAsideExposed ? self.left.width : 0, isAsideExposed ? self.right.width : 0);
     } else if (self.left && self.left.isEnabled) {
       // set the left marget width if it should be exposed
@@ -7691,6 +7672,8 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
 
   // End a drag with the given event
   self._endDrag = function(e) {
+    freezeAllScrolls(false);
+
     if (isAsideExposed) return;
 
     if (isDragging) {
@@ -7728,7 +7711,7 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
 
     if (isDragging) {
       self.openAmount(offsetX + (lastX - startX));
-      //self.content.setCanScroll(false);
+      freezeAllScrolls(true);
     }
   };
 
@@ -7807,10 +7790,12 @@ function($scope, $attrs, $ionicSideMenuDelegate, $ionicPlatform, $ionicBody, $io
     deregisterBackButtonAction();
     self.$scope = null;
     if (self.content) {
-      self.content.setCanScroll(true);
       self.content.element = null;
       self.content = null;
     }
+
+    // ensure scrolls are unfrozen
+    freezeAllScrolls(false);
   });
 
   self.initialize({
@@ -9803,8 +9788,6 @@ function($timeout, $controller, $ionicBind, $ionicConfig) {
             scrollViewOptions: scrollViewOptions
           });
 
-          $scope.scrollCtrl = scrollCtrl;
-
           $scope.$on('$destroy', function() {
             if (scrollViewOptions) {
               scrollViewOptions.scrollingComplete = noop;
@@ -10567,7 +10550,7 @@ IonicModule
 * ```
 */
 IonicModule
-.directive('ionLabel', [function() {
+.directive('ionLabel', ['$timeout', function($timeout) {
   return {
     restrict: 'E',
     require: '?^ionInput',
@@ -10590,7 +10573,9 @@ IonicModule
           ionInputCtrl.setInputAriaLabeledBy(id);
 
           $element.on('click', function() {
-            ionInputCtrl.focus();
+            $timeout(function() {
+              ionInputCtrl.focus();
+            });
           });
         }
       };
@@ -12625,22 +12610,6 @@ function($timeout, $ionicGesture, $window) {
           element: element[0],
           onDrag: function() {},
           endDrag: function() {},
-          setCanScroll: function(canScroll) {
-            var c = $element[0].querySelector('.scroll');
-
-            if (!c) {
-              return;
-            }
-
-            var content = angular.element(c.parentElement);
-            if (!content) {
-              return;
-            }
-
-            // freeze our scroll container if we have one
-            var scrollScope = content.scope();
-            scrollScope.scrollCtrl && scrollScope.scrollCtrl.freezeScrollShut(!canScroll);
-          },
           getTranslateX: function() {
             return $scope.sideMenuContentTranslateX || 0;
           },
@@ -12708,7 +12677,9 @@ function($timeout, $ionicGesture, $window) {
 
         // add gesture handlers
         var gestureOpts = { stop_browser_behavior: false };
-        gestureOpts.prevent_default_directions = ['left', 'right'];
+        if (ionic.DomUtil.getParentOrSelfWithClass($element[0], 'overflow-scroll')) {
+          gestureOpts.prevent_default_directions = ['left', 'right'];
+        }
         var contentTapGesture = $ionicGesture.on('tap', onContentTap, $element, gestureOpts);
         var dragRightGesture = $ionicGesture.on('dragright', onDragX, $element, gestureOpts);
         var dragLeftGesture = $ionicGesture.on('dragleft', onDragX, $element, gestureOpts);
@@ -13115,8 +13086,7 @@ IonicModule
 .directive('ionSlides', [
   '$animate',
   '$timeout',
-  '$compile',
-function($animate, $timeout, $compile) {
+function($animate, $timeout) {
   return {
     restrict: 'E',
     transclude: true,
@@ -13134,10 +13104,6 @@ function($animate, $timeout, $compile) {
 
       this.update = function() {
         $timeout(function() {
-          if (!_this.__slider) {
-            return;
-          }
-
           _this.__slider.update();
           if (_this._options.loop) {
             _this.__slider.createLoop();
@@ -13170,7 +13136,7 @@ function($animate, $timeout, $compile) {
       this._options = newOptions;
 
       $timeout(function() {
-        var slider = new ionic.views.Swiper($element.children()[0], newOptions, $scope, $compile);
+        var slider = new ionic.views.Swiper($element.children()[0], newOptions, $scope);
 
         _this.__slider = slider;
         $scope.slider = _this.__slider;
@@ -13183,10 +13149,10 @@ function($animate, $timeout, $compile) {
     }],
 
 
-    link: function($scope) {
+    link: function($scope, $element) {
       $scope.showPager = true;
       // Disable ngAnimate for slidebox and its children
-      //$animate.enabled(false, $element);
+      $animate.enabled(false, $element);
     }
   };
 }])
