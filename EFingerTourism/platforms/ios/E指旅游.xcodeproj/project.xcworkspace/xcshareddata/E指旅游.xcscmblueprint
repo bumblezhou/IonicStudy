@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1DA5F381B314C744C6B68D81D9D08670251C7209",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "FD680240F80F7DCEB6F460536E74EEDD72CD34A1" : 0,
+    "1DA5F381B314C744C6B68D81D9D08670251C7209" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "148F0154-5834-4D67-A0D5-7123FC6A5437",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "FD680240F80F7DCEB6F460536E74EEDD72CD34A1" : "",
+    "1DA5F381B314C744C6B68D81D9D08670251C7209" : "IonicStudy\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "E指旅游",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "EFingerTourism\/platforms\/ios\/E指旅游.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/bumblezhou\/IonicStudy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1DA5F381B314C744C6B68D81D9D08670251C7209"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/bumblezhou\/HybridStudy.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "FD680240F80F7DCEB6F460536E74EEDD72CD34A1"
+    }
+  ]
+}
